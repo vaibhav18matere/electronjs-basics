@@ -18,6 +18,10 @@ function createWindow() {
           }
      ));
 
+     //to have an access of dev tools
+
+     wind.webContents.openDevTools();
+
      wind.on('closed', () => {
           wind = null;
      });
