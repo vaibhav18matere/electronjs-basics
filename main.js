@@ -1,8 +1,11 @@
 console.log('console from main.js file');
 
-const electron = require('electron');
+const electron = require("electron");
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
+
+//const {app, BrowserWindow} = require('electron')
+
 const path = require('path');
 const url = require('url');
 
@@ -10,8 +13,20 @@ let wind;
 let wind2;
 
 function createWindow() {
-     wind = new BrowserWindow();
-     wind2 = new BrowserWindow();
+     wind = new BrowserWindow({
+          webPreferences: {
+               nodeIntegration: true,
+               contextIsolation: false,
+               enableRemoteModule: true,
+          },
+     });
+     wind2 = new BrowserWindow({
+          webPreferences: {
+               nodeIntegration: true,
+               contextIsolation: false,
+               enableRemoteModule: true,
+          },
+     });
      wind.loadURL(url.format(
           {
                pathname: path.join(__dirname, 'index.html'),
