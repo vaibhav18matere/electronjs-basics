@@ -1,0 +1,1 @@
+console.log('console from index2.js - rendered processs 2');

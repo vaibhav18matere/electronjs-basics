@@ -1,4 +1,4 @@
-console.log('starting...electron app');
+console.log('console from main.js file');
 
 const electron = require('electron');
 const app = electron.app;
@@ -7,9 +7,11 @@ const path = require('path');
 const url = require('url');
 
 let wind;
+let wind2;
 
 function createWindow() {
      wind = new BrowserWindow();
+     wind2 = new BrowserWindow();
      wind.loadURL(url.format(
           {
                pathname: path.join(__dirname, 'index.html'),
@@ -18,11 +20,24 @@ function createWindow() {
           }
      ));
 
+     wind2.loadURL(url.format(
+          {
+               pathname: path.join(__dirname, 'indextwo.html'),
+               protocol: 'file',
+               slashes: true,
+          }
+     ));
+
      //to have an access of dev tools
 
      wind.webContents.openDevTools();
+     wind2.webContents.openDevTools();
 
      wind.on('closed', () => {
+          wind = null;
+     });
+
+     wind2.on('closed', () => {
           wind = null;
      });
 }
@@ -43,6 +58,12 @@ app.on('window-all-closed', () => {
 
 app.on('activate', () => {
      if (wind === null) {
+          createWindow();
+     }
+});
+
+app.on('activate', () => {
+     if (wind2 === null) {
           createWindow();
      }
 });
