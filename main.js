@@ -24,3 +24,21 @@ function createWindow() {
 }
 
 app.on('ready', createWindow);
+
+// if all browser windows are closed 
+// we need to explicitely force closed the application.
+
+app.on('window-all-closed', () => {
+     if (process.platform !== 'darwin') {
+          app.quit();
+     }
+});
+
+// on mac, if there are no windows open and we click
+// on dock icon then we have to create window again
+
+app.on('activate', () => {
+     if (wind === null) {
+          createWindow();
+     }
+});
