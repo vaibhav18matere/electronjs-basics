@@ -29,6 +29,7 @@ function createWindow() {
           height: 150,
           width5: 300,
           frame: false,
+          show: false,
      });
      wind.loadURL(url.format(
           {
@@ -58,6 +59,10 @@ function createWindow() {
      wind2.on('closed', () => {
           wind = null;
      });
+
+     wind2.once('ready-to-show', () => {
+          wind2.show();
+     })
 }
 
 app.on('ready', createWindow);
