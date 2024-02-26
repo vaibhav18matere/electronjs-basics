@@ -26,6 +26,9 @@ function createWindow() {
                contextIsolation: false,
                enableRemoteModule: true,
           },
+          height: 150,
+          width5: 300,
+          frame: false,
      });
      wind.loadURL(url.format(
           {
@@ -46,7 +49,7 @@ function createWindow() {
      //to have an access of dev tools
 
      wind.webContents.openDevTools();
-     wind2.webContents.openDevTools();
+    // wind2.webContents.openDevTools();
 
      wind.on('closed', () => {
           wind = null;

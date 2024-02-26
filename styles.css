@@ -1,3 +1,15 @@
 h1{
      color: blue;
 }
+#widget-body{
+    background-color: #222233;
+    color: #AACCFF;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    height: 150px;   
+    overflow:hidden;
+    -webkit-app-region: drag;
+}
+#random-quote{
+    letter-spacing: 1px;
+    text-align: center;
+}
